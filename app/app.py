@@ -58,7 +58,8 @@ def classifyDocument():
    count_vectorizer = app.config['countVectorizer'] 
    if NB_Model is not None:
        print('Model loaded')
-       print(classifyDocumentType(NB_Model,count_vectorizer,save_path))
+       documentType = classifyDocumentType(NB_Model,count_vectorizer,save_path)
+       response =  documentType[0]
    else:
        print('Model not loaded')
    return flask_response(json.dumps(response),status=200,mimetype='application/json')
